@@ -15,6 +15,8 @@ public class RunningTime {
     }
 
     public String format(TimeUnit unit){
-        return Long.toString(unit.convert(time, TimeUnit.NANOSECONDS));
+        long newTime = unit.convert(
+                time, TimeUnit.NANOSECONDS);
+        return Long.toString(newTime);
     }
 }

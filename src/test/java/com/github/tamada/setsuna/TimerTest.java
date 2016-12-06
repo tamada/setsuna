@@ -18,7 +18,7 @@ public class TimerTest{
             }
         });
 
-        assertThat(Integer.valueOf(time.format(TimeUnit.MILLISECONDS)), is(1));
+        assertThat(Integer.valueOf(time.format(TimeUnit.SECONDS)), is(0));
     }
 
     @Test
@@ -29,6 +29,5 @@ public class TimerTest{
         });
 
         assertThat(object.value(), is("hoge"));
-        assertThat(Integer.valueOf(object.time().format(TimeUnit.MILLISECONDS)), is(1));
     }
 }
