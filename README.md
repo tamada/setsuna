@@ -31,7 +31,7 @@ and measure the running time, like below.
 ```java
 Timer timer = new Timer();
 RunningTime time = timer.measure(() -> {
-    // ここで何らかの本質的な処理
+    // essential process for measuring time.
     ....
 });
 ```
@@ -47,7 +47,7 @@ Of course, Setsuna accepts the value returned process.
 ```java
 Timer timer = new Timer();
 TimeredObject<?> object = timer.measure(() -> {
-    // ここで何らかの本質的な処理
+    // essential process for measuring time.
     ....
     return hoge;
 });
@@ -65,11 +65,11 @@ we can use ```ThrowableTimer``` instead of ```Timer```.
 ```java
 ThrowableTimer timer = new ThrowableTimer();
 RunningTime time = timer.measure(() -> {
-    // ここで何らかの本質的な処理
+    // essential process for measuring time.
     ....
 });
 TimeredObject<?> object = timer.measure(() -> {
-    // ここで何らかの本質的な処理
+    // essential process for measuring time.
     ....
     return hoge;
 });
