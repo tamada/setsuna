@@ -1,6 +1,6 @@
 package com.github.tamada.setsuna;
 
-import java.util.concurrent.TimeUnit;
+import static com.github.tamada.setsuna.Unit.NANO_SECONDS;
 
 public class RunningTime {
     private long time;
@@ -11,12 +11,19 @@ public class RunningTime {
 
     @Override
     public String toString(){
-        return format(TimeUnit.NANOSECONDS);
+        return format(NANO_SECONDS, "%g");
     }
 
-    public String format(TimeUnit unit){
-        long newTime = unit.convert(
-                time, TimeUnit.NANOSECONDS);
-        return Long.toString(newTime);
+    public double convertTo(Unit unit){
+        return unit.convert(time, NANO_SECONDS);
+    }
+
+    public String format(Unit unit){
+        return format(unit, "%f");
+    }
+
+    public String format(Unit unit, String formatter){
+        double newTime = unit.convert(time, NANO_SECONDS);
+        return String.format(formatter, newTime);
     }
 }

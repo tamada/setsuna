@@ -7,9 +7,9 @@ public class Timer {
         return new RunningTime(System.nanoTime() - nano);
     }
 
-    public <V> TimeredObject<V> measure(Executable<V> executable){
+    public <R> TimeredObject<R> measure(Executable<R> executable){
         long nano = System.nanoTime();
-        V value = executable.execute();
-        return new TimeredObject<V>(value, new RunningTime(System.nanoTime() - nano));
+        R value = executable.execute();
+        return new TimeredObject<R>(value, new RunningTime(System.nanoTime() - nano));
     }
 }
