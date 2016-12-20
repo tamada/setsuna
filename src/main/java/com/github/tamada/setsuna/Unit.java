@@ -18,6 +18,6 @@ public enum Unit {
 
     public double convert(double sourceDuration, Unit sourceUnit){
         if(this == sourceUnit) return new Double(sourceDuration);
-        return ((1.0 * sourceDuration) / digit) * sourceUnit.digit;
+        return ((double)sourceDuration / digit) * sourceUnit.digit;
     }
 }

@@ -8,7 +8,86 @@
   <packaging>jar</packaging>
 
   <name>setsuna</name>
+  <description>Running time measure.</description>
   <url>http://github.com/tamada/setsuna</url>
+
+  <licenses>
+    <license>
+      <name>Apache License 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/tamada/setsuna</url>
+    <connection>scm:git:git://github.com/tamada/setsuna.git</connection>
+    <developerConnection>scm:git:git://github.com/tamada/setsuna.git</developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>tamada</id>
+      <name>Haruaki Tamada</name>
+      <email>tamada@users.noreply.github.com</email>
+      <roles>
+        <role>lead</role>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>-9</timezone>
+    </developer>
+  </developers>
+
+  <issueManagement>
+    <system>GitHub</system>
+    <url>http://github.com/tamada/setsuna/issue</url>
+  </issueManagement>
+  
+  <distributionManagement>
+  	<repository>
+      <id>sonatype-nexus-staging</id>
+      <name>Nexus Release Repository</name>
+      <uniqueVersion>false</uniqueVersion>
+      <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>tamada</id>
+      <name>tamada Repository</name>
+      <uniqueVersion>false</uniqueVersion>
+  	  <url>file:${user.home}/maven2/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <profiles>
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.0-alpha-4</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
