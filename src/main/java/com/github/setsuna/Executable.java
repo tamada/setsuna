@@ -1,4 +1,4 @@
-package com.github.tamada.setsuna;
+package com.github.setsuna;
 
 @FunctionalInterface
 public interface Executable<V> {

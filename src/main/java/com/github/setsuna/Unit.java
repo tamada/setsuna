@@ -1,4 +1,4 @@
-package com.github.tamada.setsuna;
+package com.github.setsuna;
 
 public enum Unit {
     NANO_SECONDS(1),

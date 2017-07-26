@@ -1,4 +1,4 @@
-package com.github.tamada.setsuna;
+package com.github.setsuna;
 
 public class TimeredObject<S> {
     private S value;
