@@ -45,7 +45,7 @@
   </issueManagement>
   
   <distributionManagement>
-  	<repository>
+    <repository>
       <id>sonatype-nexus-staging</id>
       <name>Nexus Release Repository</name>
       <uniqueVersion>false</uniqueVersion>
@@ -55,7 +55,7 @@
       <id>tamada</id>
       <name>tamada Repository</name>
       <uniqueVersion>false</uniqueVersion>
-  	  <url>file:${user.home}/maven2/</url>
+      <url>file:${user.home}/.m2/repository</url>
     </snapshotRepository>
   </distributionManagement>
 

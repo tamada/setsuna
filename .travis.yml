@@ -1,0 +1,15 @@
+language: java
+jdk:
+  - oraclejdk8
+
+env:
+  secure: "SVqvkefDhbvlQjIuOnHFvd/3XJ/OrbqjjancnapuVDOlB/Y2EUnL1RjjMO6k9ZO4+N1BLLBm8Oo86o1HEj067QJ6FrCdpzNXd99Ay9a6agOoAb+tKCd1mFmLaSuTX8DtE8oy27hLtPClUmQOZS/ZbmpeSjkTGqCJxgeVDsHpPw9HPLnPR8kxh4wZTJzgF/DgKJwqZWRaLmQbbpW70xipaz4f/uXNvvApXHF+n0ddfnjEQ6B1Z2J2ORwCgC0FP25v3qIC/Csx/q6pWtoMepP+F8m43KPNIWF5p23EMLKOf+jGjKHK7owFvCHEGSKownHX1DLA9Q2tJ41qSv7lSPPccPbKncJwOVshqH/LyQ6jwHXk0Fi/PfLQkTKXf7jYDo+Gc0VzrpwACmfW9MLQ8DYIubRCrt/PrJcez4DM8sXbJe6oAOoiyXow7PLXJnJERM/qiKl8HOpF7s5hBOPIQkMiiSxQHtETr8BhoqEuK+nGRnpM18Vt6+nV6A1jD5Zk2D0l3uiMScYqUYNiaa76kLY38S4P5M5tKTxaIXoG4wle/ssifxy8PYARY/Aj1X7k/oRdIH9dUvaL6rek3GhJU7eKBQFBOJAeenXhvowP0zj3SJO707SQu/McgU6VYwsis0CMYC4KLzY/VG99SfpgANyOr+/lXuVX3ve7U8sEb/O9Xwk="
+
+after_success:
+  - mvn -DrepoToken=$COVERALLS_TOKEN clean test jacoco:report coveralls:report
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+
+    
