@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/tamada/setsuna.svg?branch=master)](https://travis-ci.org/tamada/setsuna)
+[![Coverage Status](https://coveralls.io/repos/github/tamada/setsuna/badge.svg?branch=master)](https://coveralls.io/github/tamada/setsuna?branch=master)
+
 # Setsuna
 
 Setsuna is a tool for measuring the running time of a certain process for the Java programs.
@@ -31,8 +34,7 @@ Therefore, Setsuna introduces lambda expressions, and functional interfaces in J
 then measures the running time, like below.
 
 ```java
-Timer timer = new Timer();
-RunningTime time = timer.measure(() -> {
+RunningTime time = Timer.measure(() -> {
     // essential process for measuring time.
     ....
 });
@@ -47,8 +49,7 @@ The measured time is returned by an object of ```RunningTime```.
 Of course, Setsuna accepts the value returned process.
 
 ```java
-Timer timer = new Timer();
-TimeredObject<?> object = timer.measure(() -> {
+TimeredObject<SUITABLE_CLASS> object = Timer.measure(() -> {
     // essential process for measuring time.
     ....
     return hoge;
@@ -65,12 +66,11 @@ If the essential process will throw some ```Exception```,
 we can use ```ThrowableTimer``` instead of ```Timer```.
 
 ```java
-ThrowableTimer timer = new ThrowableTimer();
-RunningTime time = timer.measure(() -> {
+RunningTime time = ThrowableTimer.measure(() -> {
     // essential process for measuring time.
     ....
 });
-TimeredObject<?> object = timer.measure(() -> {
+TimeredObject<SUITABLE_CLASS> object = ThrowableTimer.measure(() -> {
     // essential process for measuring time.
     ....
     return hoge;
@@ -118,8 +118,7 @@ long time = timer.getTime();
 そこで，本プロジェクトでは，ラムダ式と関数型インターフェースを利用して，次のように処理時間を計測します．
 
 ```java
-Timer timer = new Timer();
-RunningTime time = timer.measure(() -> {
+RunningTime time = Timer.measure(() -> {
     // ここで何らかの本質的な処理
     ....
 });
@@ -134,8 +133,7 @@ RunningTime time = timer.measure(() -> {
 もちろん，返り値のあるプログラムであっても問題ありません．
 
 ```java
-Timer timer = new Timer();
-TimeredObject<?> object = timer.measure(() -> {
+TimeredObject<SUITABLE_CLASS> object = Timer.measure(() -> {
     // ここで何らかの本質的な処理
     ....
     return hoge;
@@ -150,12 +148,11 @@ TimeredObject<?> object = timer.measure(() -> {
 ある処理が例外を投げる場合も```Timer```の代わりに```ThrowableTimer```を利用することで計測可能です．
 
 ```java
-ThrowableTimer timer = new ThrowableTimer();
-RunningTime time = timer.measure(() -> {
+RunningTime time = ThrowableTimer.measure(() -> {
     // ここで何らかの本質的な処理
     ....
 });
-TimeredObject<?> object = timer.measure(() -> {
+TimeredObject<?> object = ThrowableTimer.measure(() -> {
     // ここで何らかの本質的な処理
     ....
     return hoge;
