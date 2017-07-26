@@ -1,4 +1,4 @@
-package com.github.tamada.setsuna;
+package com.github.setsuna;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThan;
@@ -8,14 +8,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import com.github.setsuna.RunningTime;
+import com.github.setsuna.ThrowableTimer;
+import com.github.setsuna.TimeredObject;
+import com.github.setsuna.Unit;
+
 public class ThrowableTimerTest{ 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void testRunnable() throws InterruptedException{
-        ThrowableTimer timer = new ThrowableTimer();
-        RunningTime time = timer.measure(() -> {
+        RunningTime time = ThrowableTimer.measure(() -> {
             Thread.sleep(1);
         });
 
@@ -24,8 +28,7 @@ public class ThrowableTimerTest{
 
     @Test
     public void testExecutable() throws InterruptedException{
-        ThrowableTimer timer = new ThrowableTimer();
-        TimeredObject<String> object = timer.measure(() -> {
+        TimeredObject<String> object = ThrowableTimer.measure(() -> {
             Thread.sleep(1);
             return "hoge";
         });
@@ -36,25 +39,21 @@ public class ThrowableTimerTest{
 
     @Test
     public void testException(){
-        ThrowableTimer timer = new ThrowableTimer();
-
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("enable to throw the exception!!");
 
-        timer.measure(() -> {
+        ThrowableTimer.measure(() -> {
             throw new RuntimeException("enable to throw the exception!!");
         });
     }
 
     @Test
     public void testException2(){
-        ThrowableTimer timer = new ThrowableTimer();
-
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("enable to throw the exception!!");
 
         @SuppressWarnings("unused")
-        TimeredObject<String> object = timer.measure(() -> {
+        TimeredObject<String> object = ThrowableTimer.measure(() -> {
             int x = 10;
             if((x * x) % 2 == 1){
                 return "hoge";

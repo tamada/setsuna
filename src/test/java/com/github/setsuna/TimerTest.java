@@ -1,16 +1,20 @@
-package com.github.tamada.setsuna;
+package com.github.setsuna;
 
-import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import com.github.setsuna.RunningTime;
+import com.github.setsuna.Timer;
+import com.github.setsuna.TimeredObject;
+import com.github.setsuna.Unit;
+
 public class TimerTest{ 
     @Test
     public void testRunnable(){
-        Timer timer = new Timer();
-        RunningTime time = timer.measure(() -> {
+        RunningTime time = Timer.measure(() -> {
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
@@ -22,8 +26,7 @@ public class TimerTest{
 
     @Test
     public void testExecutable(){
-        Timer timer = new Timer();
-        TimeredObject<String> object = timer.measure(() -> {
+        TimeredObject<String> object = Timer.measure(() -> {
             try{
                 Thread.sleep(1);
             } catch(InterruptedException e){ }

@@ -1,15 +1,17 @@
-package com.github.tamada.setsuna;
+package com.github.setsuna;
 
-import static com.github.tamada.setsuna.Unit.MICRO_SECONDS;
-import static com.github.tamada.setsuna.Unit.MILLI_SECONDS;
-import static com.github.tamada.setsuna.Unit.NANO_SECONDS;
-import static com.github.tamada.setsuna.Unit.SECONDS;
+import static com.github.setsuna.Unit.MICRO_SECONDS;
+import static com.github.setsuna.Unit.MILLI_SECONDS;
+import static com.github.setsuna.Unit.NANO_SECONDS;
+import static com.github.setsuna.Unit.SECONDS;
 import static org.hamcrest.Matchers.arrayContaining;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.closeTo;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+
+import com.github.setsuna.Unit;
 
 public class UnitTest {
     @Test

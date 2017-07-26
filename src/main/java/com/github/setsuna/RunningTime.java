@@ -1,6 +1,6 @@
-package com.github.tamada.setsuna;
+package com.github.setsuna;
 
-import static com.github.tamada.setsuna.Unit.NANO_SECONDS;
+import static com.github.setsuna.Unit.NANO_SECONDS;
 
 public class RunningTime {
     private long time;
